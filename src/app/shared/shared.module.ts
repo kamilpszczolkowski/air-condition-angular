@@ -57,7 +57,8 @@ import {
   faMediumM,
   faTwitter,
   faInstagram,
-  faYoutube
+  faYoutube,
+  faCloudversify,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
@@ -88,7 +89,8 @@ library.add(
   faLightbulb,
   faWindowMaximize,
   faStream,
-  faBook
+  faBook,
+  faCloudversify,
 );
 
 import { BigInputComponent } from './big-input/big-input.component';

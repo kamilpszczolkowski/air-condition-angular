@@ -35,9 +35,9 @@ export class AppComponent implements OnInit {
   logo = require('../assets/logo.png');
   languages = ['en', 'de', 'sk', 'fr', 'es', 'pt-br', 'zh-cn'];
   navigation = [
-    { link: 'about', label: 'anms.menu.about' },
-    { link: 'features', label: 'anms.menu.features' },
-    { link: 'examples', label: 'anms.menu.examples' }
+    { link: 'statins', label: 'Stations' },
+    { link: 'Map', label: 'Map' },
+    { link: 'about', label: 'About' },
   ];
   navigationSideMenu = [
     ...this.navigation,

@@ -12,11 +12,14 @@ import { initStateFromLocalStorage } from './meta-reducers/init-state-from-local
 import { debug } from './meta-reducers/debug.reducer';
 import { AuthState } from './auth/auth.models';
 import { authReducer } from './auth/auth.reducer';
+import { dataReducer } from './fetch-data/fetch-data.reducer';
 import { RouterStateUrl } from './router/router.state';
+import { DataState } from './fetch-data/fetch-data.models';
 
 export const reducers: ActionReducerMap<AppState> = {
   auth: authReducer,
-  router: routerReducer
+  router: routerReducer,
+  data: dataReducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = [
@@ -38,7 +41,12 @@ export const selectRouterState = createFeatureSelector<
   RouterReducerState<RouterStateUrl>
 >('router');
 
+export const selectDataState = createFeatureSelector<AppState, DataState>(
+  'data'
+);
+
 export interface AppState {
   auth: AuthState;
   router: RouterReducerState<RouterStateUrl>;
+  data: DataState;
 }

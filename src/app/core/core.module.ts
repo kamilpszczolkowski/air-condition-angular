@@ -24,6 +24,8 @@ import { AppErrorHandler } from './error-handler/app-error-handler.service';
 import { CustomSerializer } from './router/custom-serializer';
 import { NotificationService } from './notifications/notification.service';
 import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effects';
+import { DataEffects } from './fetch-data/fetch-data.effects';
+import { FetchDataService } from './fetch-data/fetch-data.service';
 
 @NgModule({
   imports: [
@@ -34,7 +36,7 @@ import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effe
     // ngrx
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects, GoogleAnalyticsEffects]),
+    EffectsModule.forRoot([AuthEffects, GoogleAnalyticsEffects, DataEffects]),
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
@@ -57,6 +59,7 @@ import { GoogleAnalyticsEffects } from './google-analytics/google-analytics.effe
     AuthGuardService,
     AnimationsService,
     httpInterceptorProviders,
+    FetchDataService,
     TitleService,
     { provide: ErrorHandler, useClass: AppErrorHandler },
     { provide: RouterStateSerializer, useClass: CustomSerializer }

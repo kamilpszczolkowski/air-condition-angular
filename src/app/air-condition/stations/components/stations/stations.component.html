@@ -1,4 +1,35 @@
-<p>
-  stations works!
-  {{ isFetching | async }}
-</p>
+<div class="container">
+  <h3>List of all measurements stations in Poland</h3>
+  <form class="example-form" *ngIf="!isFetching">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Search phrase" (value)="searchPhrase" (keyup)="handleInputChange($event)">
+      </mat-form-field>
+    </form>
+    <mat-spinner *ngIf="isFetching"></mat-spinner>
+  <table
+    mat-table
+    *ngIf="!isFetching"
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+  >
+    <ng-container matColumnDef="stationName">
+      <th mat-header-cell *matHeaderCellDef>City</th>
+      <td mat-cell *matCellDef="let element" (click)="handleRowClick(element.id)">{{ element.stationName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>address</th>
+      <td mat-cell *matCellDef="let element" (click)="handleRowClick(element.id)">{{ element.addressStreet || "Nie podano adresu" }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [hidden]="isFetching"
+    [pageSizeOptions]="[5, 10, 15, 20]"
+    [pageSize]="10"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

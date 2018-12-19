@@ -11,3 +11,8 @@ export const selectIsFetching = createSelector(
     selectDataState,
     (state: DataState) => state.isFetching
 )
+
+export const selectstationsList = createSelector(
+    selectDataState,
+    (state: DataState) => state.stationsList
+)

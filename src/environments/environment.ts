@@ -11,6 +11,7 @@ export const environment = {
   production: false,
   test: false,
   i18nPrefix: '',
+  apiUrl: 'https://cors-anywhere.herokuapp.com/http://api.gios.gov.pl/pjp-api/rest',
   versions: {
     app: packageJson.version,
     angular: packageJson.dependencies['@angular/core'],

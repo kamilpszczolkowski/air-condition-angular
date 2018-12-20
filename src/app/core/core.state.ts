@@ -2,19 +2,19 @@ import {
   ActionReducerMap,
   MetaReducer,
   createFeatureSelector
-} from '@ngrx/store';
-import { routerReducer, RouterReducerState } from '@ngrx/router-store';
-import { storeFreeze } from 'ngrx-store-freeze';
+} from "@ngrx/store";
+import { routerReducer, RouterReducerState } from "@ngrx/router-store";
+import { storeFreeze } from "ngrx-store-freeze";
 
-import { environment } from '@env/environment';
+import { environment } from "@env/environment";
 
-import { initStateFromLocalStorage } from './meta-reducers/init-state-from-local-storage.reducer';
-import { debug } from './meta-reducers/debug.reducer';
-import { AuthState } from './auth/auth.models';
-import { authReducer } from './auth/auth.reducer';
-import { dataReducer } from './fetch-data/fetch-data.reducer';
-import { RouterStateUrl } from './router/router.state';
-import { DataState } from './fetch-data/fetch-data.models';
+import { initStateFromLocalStorage } from "./meta-reducers/init-state-from-local-storage.reducer";
+import { debug } from "./meta-reducers/debug.reducer";
+import { AuthState } from "./auth/auth.models";
+import { authReducer } from "./auth/auth.reducer";
+import { dataReducer } from "./fetch-data/fetch-data.reducer";
+import { RouterStateUrl } from "./router/router.state";
+import { DataState } from "./fetch-data/fetch-data.models";
 
 export const reducers: ActionReducerMap<AppState> = {
   auth: authReducer,
@@ -33,16 +33,16 @@ if (!environment.production) {
 }
 
 export const selectAuthState = createFeatureSelector<AppState, AuthState>(
-  'auth'
+  "auth"
 );
 
 export const selectRouterState = createFeatureSelector<
   AppState,
   RouterReducerState<RouterStateUrl>
->('router');
+>("router");
 
 export const selectDataState = createFeatureSelector<AppState, DataState>(
-  'data'
+  "data"
 );
 
 export interface AppState {

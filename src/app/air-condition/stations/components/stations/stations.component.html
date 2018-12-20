@@ -1,14 +1,14 @@
 <div class="container">
   <h3>List of all measurements stations in Poland</h3>
-  <form class="example-form" *ngIf="!isFetching">
+  <form class="example-form" [formGroup]="searchForm" *ngIf="!(isFetching$ | async)">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Search phrase" (value)="searchPhrase" (keyup)="handleInputChange($event)">
+        <input matInput formControlName="searchInput" placeholder="Search phrase" (keyup)="handleInputChange($event)">
       </mat-form-field>
     </form>
-    <mat-spinner *ngIf="isFetching"></mat-spinner>
+    <mat-spinner *ngIf="isFetching$ | async"></mat-spinner>
   <table
     mat-table
-    *ngIf="!isFetching"
+    *ngIf="!(isFetching$ | async)"
     [dataSource]="dataSource"
     class="mat-elevation-z8"
   >
@@ -27,7 +27,7 @@
   </table>
 
   <mat-paginator
-    [hidden]="isFetching"
+    [hidden]="isFetching$ | async"
     [pageSizeOptions]="[5, 10, 15, 20]"
     [pageSize]="10"
     showFirstLastButtons

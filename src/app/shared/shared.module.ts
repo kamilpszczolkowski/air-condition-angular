@@ -24,7 +24,8 @@ import { MatDividerModule } from "@angular/material/divider";
 import {
   MatSliderModule,
   MatTableModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSortModule
 } from "@angular/material/";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material";
@@ -126,6 +127,7 @@ import { BigInputActionComponent } from "./big-input/big-input-action.component"
     MatDividerModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSortModule,
     FontAwesomeModule
   ],
   declarations: [BigInputComponent, BigInputActionComponent],
@@ -158,6 +160,7 @@ import { BigInputActionComponent } from "./big-input/big-input-action.component"
     MatDatepickerModule,
     MatPaginatorModule,
     MatNativeDateModule,
+    MatSortModule,
 
     FontAwesomeModule,
 

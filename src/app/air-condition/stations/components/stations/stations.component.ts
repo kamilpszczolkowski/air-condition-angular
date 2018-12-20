@@ -5,8 +5,13 @@ import {
   ViewChild
 } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { MatPaginator, MatTableDataSource } from "@angular/material";
-import { FormGroupDirective, FormGroup, FormControl } from "@angular/forms";
+import {
+  MatPaginator,
+  MatTableDataSource,
+  MatDialog,
+  MatSort
+} from "@angular/material";
+import { FormGroup, FormControl } from "@angular/forms";
 
 import {
   AppState,
@@ -16,7 +21,8 @@ import {
   selectSearchPhrase,
   DataUpdateSearchPhraseRequestAction
 } from "@app/core";
-import { StationListTable } from "../../models/stationsModels";
+import { StationsModalComponent } from "../stations-modal/stations-modal.component";
+import { StationListTable } from "@app/core/fetch-data/fetch-data.models";
 
 @Component({
   selector: "anms-stations",
@@ -32,14 +38,16 @@ export class StationsComponent implements OnInit {
   isFetching$ = this.store.select(selectIsFetching);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.store.dispatch(new DataRequestStationsAction());
     this.store.select(selectDataSource).subscribe(list => {
       this.dataSource = new MatTableDataSource<StationListTable>(list);
       this.dataSource.paginator = this.paginator;
+      setTimeout(() => (this.dataSource.sort = this.sort));
     });
 
     this.searchForm = new FormGroup({
@@ -57,6 +65,10 @@ export class StationsComponent implements OnInit {
     this.store.dispatch(
       new DataUpdateSearchPhraseRequestAction(event.target.value)
     );
+  }
+
+  openDialog() {
+    this.dialog.open(StationsModalComponent);
   }
 
   handleRowClick(stationId: number): void {

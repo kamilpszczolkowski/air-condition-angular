@@ -4,6 +4,7 @@ export interface StationsState {
   stationId: number;
   airQualityIndex: string;
   sensors: StationSensors[];
+  values: SensorMeasurementsWithId[];
 }
 
 export interface StationSensors {
@@ -22,6 +23,10 @@ export interface SensorParams {
 export interface SensorMeasurements {
   key: string;
   values: SensorValues[];
+}
+
+export interface SensorMeasurementsWithId extends SensorMeasurements {
+  sensorId: number;
 }
 
 export interface SensorValues {

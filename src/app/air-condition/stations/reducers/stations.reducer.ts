@@ -16,7 +16,7 @@ export function stationsReducer(
   action: Actions.StationsActions
 ): StationsState {
   switch (action.type) {
-    case Actions.SET_STATION_NAME:
+    case Actions.STATION_DATA_FETCH_REQUEST:
       return {
         ...state,
         isFetching: true,
@@ -30,6 +30,8 @@ export function stationsReducer(
       return { ...state, sensors: action.stationSensors };
     case Actions.SENSOR_FETCH_VALUES_SUCCESS:
       return { ...state, values: [...state.values, action.sensorData] };
+    case Actions.STATION_DATA_FETCH_SUCCESS:
+      return { ...state, isFetching: false };
     default:
       return state;
   }

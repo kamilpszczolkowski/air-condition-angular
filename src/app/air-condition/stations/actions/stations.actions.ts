@@ -1,20 +1,24 @@
 import { Action } from "@ngrx/store";
 import {
   StationSensors,
-  SensorMeasurements,
   SensorMeasurementsWithId
 } from "../models/stationsModels";
+
+export const STATION_DATA_FETCH_REQUEST = "STATION_DATA_FETCH_REQUEST";
+export class StationDataFetchRequestAction implements Action {
+  public readonly type = STATION_DATA_FETCH_REQUEST;
+
+  constructor(readonly payload: { name: string; id: number }) {}
+}
 
 export const STATION_DATA_FETCH_SUCCESS = "STATION_DATA_FETCH_SUCCESS";
 export class StationDataFetchSuccess implements Action {
   public readonly type = STATION_DATA_FETCH_SUCCESS;
 }
 
-export const SET_STATION_NAME = "SET_STATION_NAME";
-export class SetStationNameAction implements Action {
-  public readonly type = SET_STATION_NAME;
-
-  constructor(readonly payload: { name: string; id: number }) {}
+export const STATION_DATA_FETCH_CONTINUE = "STATION_DATA_FETCH_CONTINUE";
+export class StationDataFetchContinue implements Action {
+  public readonly type = STATION_DATA_FETCH_CONTINUE;
 }
 
 export const STATION_FETCH_AQI_SUCCESS = "STATION_FETCH_AQI_SUCCESS";

@@ -1,3 +1,18 @@
-<p>
-  {{ stationName$ | async }}
-</p>
+<ng-container *ngIf="!(isFetching | async)">
+  <h2 mat-dialog-title>{{ stationName$ | async }}</h2>
+  <p>
+    Indeks jakości powietrza - <span>{{ airQualityIndex | async }}</span>
+  </p>
+  <p>Pomiary</p>
+  <mat-dialog-content> 
+    <p *ngFor="let sensor of (sensors | async)">
+      {{sensor.param.paramName}}
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="true">Close</button>
+  </mat-dialog-actions>
+</ng-container>
+<ng-container *ngIf="(isFetching | async)">
+  <mat-spinner *ngIf="(isFetching | async)" class="centered"></mat-spinner>
+</ng-container>

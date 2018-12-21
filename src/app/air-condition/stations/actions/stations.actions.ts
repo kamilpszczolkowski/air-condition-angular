@@ -51,7 +51,7 @@ export class SensorFetchValuesSuccessAction implements Action {
 
 export type StationsActions =
   | StationDataFetchSuccess
-  | SetStationNameAction
+  | StationDataFetchRequestAction
   | StationFetchAqiSuccessAction
   | StationFetchSensorsSuccessAction
   | SensorFetchValuesRequestAction

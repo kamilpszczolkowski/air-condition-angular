@@ -72,7 +72,10 @@ export class StationsComponent implements OnInit {
     this.store.dispatch(
       new StationDataFetchRequestAction({ name: stationName, id: stationId })
     );
-    this.dialog.open(StationsModalComponent);
+    this.dialog.open(StationsModalComponent, {
+      height: "500px",
+      width: "500px"
+    });
   }
 
   handleRowClick(stationId: number): void {

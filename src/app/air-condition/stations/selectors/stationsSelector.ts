@@ -17,3 +17,18 @@ export const selectSensors = createSelector(
   selectStationsState,
   (state: StationsState) => state.sensors
 );
+
+export const selectSensorsValues = createSelector(
+  selectStationsState,
+  (state: StationsState) => state.values
+);
+
+export const selectStationsFetchStatus = createSelector(
+  selectStationsState,
+  (state: StationsState) => state.isFetching
+);
+
+export const selectAirQualityIndex = createSelector(
+  selectStationsState,
+  (state: StationsState) => state.airQualityIndex
+);

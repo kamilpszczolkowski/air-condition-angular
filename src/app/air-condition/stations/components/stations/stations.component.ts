@@ -23,6 +23,7 @@ import {
 } from "@app/core";
 import { StationsModalComponent } from "../stations-modal/stations-modal.component";
 import { StationListTable } from "@app/core/fetch-data/fetch-data.models";
+import { SetStationNameAction } from "../../actions/stations.actions";
 
 @Component({
   selector: "anms-stations",
@@ -67,7 +68,10 @@ export class StationsComponent implements OnInit {
     );
   }
 
-  openDialog() {
+  openDialog(stationName: string, stationId: number): void {
+    this.store.dispatch(
+      new SetStationNameAction({ name: stationName, id: stationId })
+    );
     this.dialog.open(StationsModalComponent);
   }
 

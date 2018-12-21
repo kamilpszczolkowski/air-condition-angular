@@ -30,3 +30,14 @@ export interface DataCommune {
   districtName: string;
   provinceName: string;
 }
+
+export interface AirQualityIndex {
+  id: number;
+  stCalcDate: string;
+  stIndexLevel: StIndexLevel;
+}
+
+export interface StIndexLevel {
+  id: number;
+  indexLevelName: string;
+}

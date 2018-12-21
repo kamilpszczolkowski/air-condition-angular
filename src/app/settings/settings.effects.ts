@@ -1,10 +1,10 @@
-import { ActivationEnd, Router } from '@angular/router';
-import { Injectable } from '@angular/core';
-import { OverlayContainer } from '@angular/cdk/overlay';
-import { select, Store } from '@ngrx/store';
-import { Actions, Effect, ofType } from '@ngrx/effects';
-import { TranslateService } from '@ngx-translate/core';
-import { interval, merge, of } from 'rxjs';
+import { ActivationEnd, Router } from "@angular/router";
+import { Injectable } from "@angular/core";
+import { OverlayContainer } from "@angular/cdk/overlay";
+import { select, Store } from "@ngrx/store";
+import { Actions, Effect, ofType } from "@ngrx/effects";
+import { TranslateService } from "@ngx-translate/core";
+import { interval, merge, of } from "rxjs";
 import {
   tap,
   withLatestFrom,
@@ -12,28 +12,28 @@ import {
   distinctUntilChanged,
   mapTo,
   filter
-} from 'rxjs/operators';
+} from "rxjs/operators";
 
 import {
   LocalStorageService,
   AnimationsService,
   TitleService
-} from '@app/core';
+} from "@app/core";
 
 import {
   SettingsActionTypes,
   SettingsActions,
   ActionSettingsChangeHour
-} from './settings.actions';
+} from "./settings.actions";
 import {
   selectEffectiveTheme,
   selectSettingsState
-} from './settings.selectors';
-import { State } from './settings.model';
+} from "./settings.selectors";
+import { State } from "./settings.model";
 
-export const SETTINGS_KEY = 'SETTINGS';
+export const SETTINGS_KEY = "SETTINGS";
 
-const INIT = of('anms-init-effect-trigger');
+const INIT = of("anms-init-effect-trigger");
 
 @Injectable()
 export class SettingsEffects {
@@ -100,7 +100,7 @@ export class SettingsEffects {
     tap(([action, effectiveTheme]) => {
       const classList = this.overlayContainer.getContainerElement().classList;
       const toRemove = Array.from(classList).filter((item: string) =>
-        item.includes('-theme')
+        item.includes("-theme")
       );
       if (toRemove.length) {
         classList.remove(...toRemove);

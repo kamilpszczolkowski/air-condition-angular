@@ -15,11 +15,14 @@ import { authReducer } from "./auth/auth.reducer";
 import { dataReducer } from "./fetch-data/fetch-data.reducer";
 import { RouterStateUrl } from "./router/router.state";
 import { DataState } from "./fetch-data/fetch-data.models";
+import { stationsReducer } from "@app/air-condition/stations/reducers/stations.reducer";
+import { StationsState } from "@app/air-condition/stations/models/stationsModels";
 
 export const reducers: ActionReducerMap<AppState> = {
   auth: authReducer,
   router: routerReducer,
   data: dataReducer,
+  stations: stationsReducer
 };
 
 export const metaReducers: MetaReducer<AppState>[] = [
@@ -45,8 +48,14 @@ export const selectDataState = createFeatureSelector<AppState, DataState>(
   "data"
 );
 
+export const selectStationsState = createFeatureSelector<
+  AppState,
+  StationsState
+>("stations");
+
 export interface AppState {
   auth: AuthState;
   router: RouterReducerState<RouterStateUrl>;
   data: DataState;
+  stations: StationsState;
 }

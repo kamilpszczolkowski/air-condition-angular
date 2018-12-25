@@ -1,12 +1,36 @@
 <ng-container *ngIf="!(isFetching | async)">
   <h2 mat-dialog-title>{{ stationName$ | async }}</h2>
-  <p>
-    Indeks jakości powietrza - <span>{{ airQualityIndex | async }}</span>
+  <p class="aqi">
+    Indeks jakości powietrza -
+    <span
+      class="aqi-value"
+      [style.color]="AQIColors[airQualityIndex | async]"
+      >{{ airQualityIndex | async }}</span
+    >
   </p>
-  <p>Pomiary</p>
-  <mat-dialog-content> 
-    <p *ngFor="let sensor of (sensors | async)">
-      {{sensor.param.paramName}}
+  <p>Pomiary:</p>
+  <mat-dialog-content>
+    <p class="measurement-desc" *ngFor="let sensor of (sensors | async)">
+      {{ sensor.param | titlecase }} -
+      <span
+        *ngIf="
+          !(
+            sensor.measurements[0].values[1] === undefined ||
+            sensor.measurements[0].values[1].value === null
+          )
+        "
+      >
+        {{ sensor.measurements[0].values[1].value.toFixed(2) }} µg/m<sup>3</sup>
+      </span>
+      <span
+        *ngIf="
+          sensor.measurements[0].values[1] === undefined ||
+          sensor.measurements[0].values[1].value === null
+        "
+        class="no-measure"
+      >
+        Brak pomiaru
+      </span>
     </p>
   </mat-dialog-content>
   <mat-dialog-actions>

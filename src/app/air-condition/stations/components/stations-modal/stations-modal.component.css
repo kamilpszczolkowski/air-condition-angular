@@ -1,7 +1,24 @@
 h2 {
   text-align: center;
+  font-weight: bold;
+}
+
+.aqi {
+  text-align: center;
+}
+
+.aqi-value {
+  font-weight: bold;
 }
 
 .centered {
   margin: 165px auto;
+}
+
+.measurement-desc {
+  padding-left: 15px;
+}
+
+.no-measure {
+  color: red;
 }

@@ -23,6 +23,15 @@ export const selectSensorsValues = createSelector(
   (state: StationsState) => state.values
 );
 
+export const selectSensorsWithValues = createSelector(
+  selectStationsState,
+  (state: StationsState) =>
+    state.sensors.map(sensor => ({
+      param: sensor.param.paramName,
+      measurements: state.values.filter(value => value.sensorId === sensor.id)
+    }))
+);
+
 export const selectStationsFetchStatus = createSelector(
   selectStationsState,
   (state: StationsState) => state.isFetching

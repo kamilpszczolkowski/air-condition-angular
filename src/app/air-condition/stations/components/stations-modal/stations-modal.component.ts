@@ -6,7 +6,8 @@ import {
   selectStationName,
   selectStationsFetchStatus,
   selectAirQualityIndex,
-  selectSensors
+  selectSensors,
+  selectSensorsWithValues
 } from "../../selectors/stationsSelector";
 
 @Component({
@@ -16,12 +17,18 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StationsModalComponent implements OnInit {
+  public AQIColors = {
+    "Bardzo dobry": "green",
+    Dobry: "yellowgreen",
+    Umiarkowany: "brown"
+  };
+
   constructor(private store: Store<AppState>) {}
 
   stationName$ = this.store.select(selectStationName);
   isFetching = this.store.select(selectStationsFetchStatus);
   airQualityIndex = this.store.select(selectAirQualityIndex);
-  sensors = this.store.select(selectSensors);
+  sensors = this.store.select(selectSensorsWithValues);
 
   ngOnInit() {}
 }

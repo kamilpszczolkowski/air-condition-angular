@@ -101,6 +101,7 @@ library.add(
 
 import { BigInputComponent } from "./big-input/big-input.component";
 import { BigInputActionComponent } from "./big-input/big-input-action.component";
+import { AgmCoreModule } from "@agm/core";
 
 @NgModule({
   imports: [
@@ -130,7 +131,10 @@ import { BigInputActionComponent } from "./big-input/big-input-action.component"
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyAF0dMnU6SE60S3AJT1t7UpWTbVgZI_5CQ"
+    })
   ],
   declarations: [BigInputComponent, BigInputActionComponent],
   exports: [
@@ -167,7 +171,8 @@ import { BigInputActionComponent } from "./big-input/big-input-action.component"
     FontAwesomeModule,
 
     BigInputComponent,
-    BigInputActionComponent
+    BigInputActionComponent,
+    AgmCoreModule
   ]
 })
 export class SharedModule {}

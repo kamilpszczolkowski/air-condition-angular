@@ -1,26 +1,22 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { SettingsContainerComponent } from './settings';
+import { SettingsContainerComponent } from "./settings";
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'about',
-    pathMatch: 'full'
+    path: "",
+    redirectTo: "stations",
+    pathMatch: "full"
   },
   {
-    path: 'settings',
+    path: "settings",
     component: SettingsContainerComponent,
-    data: { title: 'anms.menu.settings' }
+    data: { title: "anms.menu.settings" }
   },
   {
-    path: 'examples',
-    loadChildren: 'app/examples/examples.module#ExamplesModule'
-  },
-  {
-    path: '**',
-    redirectTo: 'about'
+    path: "**",
+    redirectTo: "stations"
   }
 ];
 
@@ -29,7 +25,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       useHash: true,
-      scrollPositionRestoration: 'enabled'
+      scrollPositionRestoration: "enabled"
     })
   ],
   exports: [RouterModule]

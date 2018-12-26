@@ -77,8 +77,4 @@ export class StationsComponent implements OnInit {
       width: "500px"
     });
   }
-
-  handleRowClick(stationId: number): void {
-    console.log(stationId);
-  }
 }

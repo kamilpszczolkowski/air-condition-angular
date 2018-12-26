@@ -16,7 +16,6 @@
 @import 'styles-reset.scss-theme';
 @import 'app/app.component.scss-theme';
 @import 'app/shared/big-input/big-input.component.scss-theme';
-@import 'app/static/about/about.component.scss-theme';
 @import 'app/examples/notifications/components/notifications.component.scss-theme';
 @import 'app/examples/todos/components/todos-container.component.scss-theme';
 @import 'app/examples/stock-market/components/stock-market-container.component.scss-theme';
@@ -27,7 +26,6 @@
 @mixin custom-components-theme($theme) {
   @include anms-styles-reset-theme($theme);
   @include anms-app-component-theme($theme);
-  @include anms-about-component-theme($theme);
   @include anms-big-input-component-theme($theme);
   @include anms-notifications-component-theme($theme);
   @include anms-todos-container-component-theme($theme);

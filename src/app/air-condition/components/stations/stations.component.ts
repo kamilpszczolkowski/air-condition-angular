@@ -13,17 +13,19 @@ import {
 } from "@angular/material";
 import { FormGroup, FormControl } from "@angular/forms";
 
-import {
-  AppState,
-  DataRequestStationsAction,
-  selectIsFetching,
-  selectDataSource,
-  selectSearchPhrase,
-  DataUpdateSearchPhraseRequestAction
-} from "@app/core";
 import { StationsModalComponent } from "../stations-modal/stations-modal.component";
 import { StationListTable } from "@app/core/fetch-data/fetch-data.models";
 import { StationDataFetchRequestAction } from "../../actions/stations.actions";
+import {
+  selectIsFetching,
+  selectDataSource,
+  selectSearchPhrase
+} from "@app/core/fetch-data/fetch-data.selectors";
+import { AppState } from "@app/core/core.state";
+import {
+  DataRequestStationsAction,
+  DataUpdateSearchPhraseRequestAction
+} from "@app/core/fetch-data/fetch-data.actions";
 
 @Component({
   selector: "anms-stations",

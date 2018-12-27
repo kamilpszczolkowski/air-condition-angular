@@ -12,23 +12,10 @@
   <mat-dialog-content>
     <p class="measurement-desc" *ngFor="let sensor of (sensors | async)">
       {{ sensor.param | titlecase }} -
-      <span
-        *ngIf="
-          !(
-            sensor.measurements[0].values[1] === undefined ||
-            sensor.measurements[0].values[1].value === null
-          )
-        "
-      >
-        {{ sensor.measurements[0].values[1].value.toFixed(2) }} µg/m<sup>3</sup>
+      <span *ngIf="(sensor.measuredVal !== -1)">
+        {{ sensor.measuredVal.toFixed(2) }} µg/m<sup>3</sup>
       </span>
-      <span
-        *ngIf="
-          sensor.measurements[0].values[1] === undefined ||
-          sensor.measurements[0].values[1].value === null
-        "
-        class="no-measure"
-      >
+      <span *ngIf="sensor.measuredVal === -1" class="no-measure">
         Brak pomiaru
       </span>
     </p>
@@ -38,5 +25,8 @@
   </mat-dialog-actions>
 </ng-container>
 <ng-container *ngIf="(isFetching | async)">
-  <mat-spinner *ngIf="(isFetching | async)" class="centered fetch-window"></mat-spinner>
+  <mat-spinner
+    *ngIf="(isFetching | async)"
+    class="centered fetch-window"
+  ></mat-spinner>
 </ng-container>

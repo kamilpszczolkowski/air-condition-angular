@@ -2,16 +2,15 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
-import { AgmCoreModule } from "@agm/core";
 
 import { SharedModule } from "@app/shared";
-import { CoreModule } from "@app/core";
 
 import { SettingsModule } from "./settings";
 import { AirConditionModule } from "./air-condition/air-condition.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { CoreModule } from "./core/core.module";
 
 @NgModule({
   imports: [

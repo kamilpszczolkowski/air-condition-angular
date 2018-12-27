@@ -7,7 +7,7 @@ import { environment as env } from "@env/environment";
 import {
   StationSensors,
   SensorMeasurements
-} from "@app/air-condition/stations/models/stationsModels";
+} from "@app/air-condition/models/stationsModels";
 
 @Injectable()
 export class FetchDataService {

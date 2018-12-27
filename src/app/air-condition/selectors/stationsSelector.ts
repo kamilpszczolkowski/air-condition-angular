@@ -23,13 +23,30 @@ export const selectSensorsValues = createSelector(
   (state: StationsState) => state.values
 );
 
-export const selectSensorsWithValues = createSelector(
+export const selectSensorsWithMeasurements = createSelector(
   selectStationsState,
   (state: StationsState) =>
-    state.sensors.map(sensor => ({
-      param: sensor.param.paramName,
-      measurements: state.values.filter(value => value.sensorId === sensor.id)
-    }))
+    state.sensors.map(sensor => {
+      let measuredVal = -1;
+      const valuesForStation = state.values.filter(
+        value => value.sensorId === sensor.id
+      )[0];
+      if (valuesForStation !== undefined) {
+        valuesForStation.values.forEach(element => {
+          if (
+            measuredVal === -1 &&
+            element.value !== undefined &&
+            element.value !== null
+          ) {
+            measuredVal = element.value;
+          }
+        });
+      }
+      return {
+        param: sensor.param.paramName,
+        measuredVal
+      };
+    })
 );
 
 export const selectStationsFetchStatus = createSelector(

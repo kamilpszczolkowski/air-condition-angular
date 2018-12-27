@@ -3,14 +3,6 @@ import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs";
 
-import {
-  ActionAuthLogin,
-  ActionAuthLogout,
-  routeAnimations,
-  AppState,
-  LocalStorageService,
-  selectIsAuthenticated
-} from "@app/core";
 import { environment as env } from "@env/environment";
 
 import {
@@ -20,6 +12,11 @@ import {
   selectSettingsLanguage,
   selectSettingsStickyHeader
 } from "./settings";
+import { routeAnimations } from "./core/animations/route.animations";
+import { AppState } from "./core/core.state";
+import { LocalStorageService } from "./core/local-storage/local-storage.service";
+import { selectIsAuthenticated } from "./core/auth/auth.selectors";
+import { ActionAuthLogin, ActionAuthLogout } from "./core/auth/auth.actions";
 
 @Component({
   selector: "anms-root",
@@ -36,7 +33,7 @@ export class AppComponent implements OnInit {
   languages = ["en", "de", "sk", "fr", "es", "pt-br", "zh-cn"];
   navigation = [
     { link: "stations", label: "Stations" },
-    { link: "map", label: "Map" },
+    { link: "map", label: "Map" }
   ];
   navigationSideMenu = [
     ...this.navigation,

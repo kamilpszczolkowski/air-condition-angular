@@ -1,14 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Store } from "@ngrx/store";
 
-import { AppState } from "@app/core";
 import {
   selectStationName,
   selectStationsFetchStatus,
   selectAirQualityIndex,
-  selectSensors,
-  selectSensorsWithValues
+  selectSensorsWithMeasurements
 } from "../../selectors/stationsSelector";
+import { AppState } from "@app/core/core.state";
 
 @Component({
   selector: "anms-stations-modal",
@@ -28,7 +27,7 @@ export class StationsModalComponent implements OnInit {
   stationName$ = this.store.select(selectStationName);
   isFetching = this.store.select(selectStationsFetchStatus);
   airQualityIndex = this.store.select(selectAirQualityIndex);
-  sensors = this.store.select(selectSensorsWithValues);
+  sensors = this.store.select(selectSensorsWithMeasurements);
 
   ngOnInit() {}
 }

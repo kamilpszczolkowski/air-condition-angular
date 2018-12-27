@@ -14,8 +14,8 @@ import { authReducer } from "./auth/auth.reducer";
 import { dataReducer } from "./fetch-data/fetch-data.reducer";
 import { RouterStateUrl } from "./router/router.state";
 import { DataState } from "./fetch-data/fetch-data.models";
-import { stationsReducer } from "@app/air-condition/stations/reducers/stations.reducer";
-import { StationsState } from "@app/air-condition/stations/models/stationsModels";
+import { stationsReducer } from "@app/air-condition/reducers/stations.reducer";
+import { StationsState } from "@app/air-condition/models/stationsModels";
 
 export const reducers: ActionReducerMap<AppState> = {
   auth: authReducer,

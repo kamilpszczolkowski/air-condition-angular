@@ -26,7 +26,7 @@ import { NotificationService } from "./notifications/notification.service";
 import { GoogleAnalyticsEffects } from "./google-analytics/google-analytics.effects";
 import { DataEffects } from "./fetch-data/fetch-data.effects";
 import { FetchDataService } from "./fetch-data/fetch-data.service";
-import { StationsEffects } from "@app/air-condition/stations/effects/stationsEffects";
+import { StationsEffects } from "@app/air-condition/effects/stationsEffects";
 
 @NgModule({
   imports: [

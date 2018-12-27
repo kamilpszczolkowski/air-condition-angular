@@ -1,12 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Store } from "@ngrx/store";
+
 import {
-  AppState,
-  DataRequestStationsAction,
   selectIsFetching,
   selectstationsList
-} from "@app/core";
-import { StationDataFetchRequestAction } from "@app/air-condition/stations/actions/stations.actions";
+} from "@app/core/fetch-data/fetch-data.selectors";
+import { DataRequestStationsAction } from "@app/core/fetch-data/fetch-data.actions";
+import { StationDataFetchRequestAction } from "@app/air-condition/actions/stations.actions";
+import { AppState } from "@app/core/core.state";
 
 @Component({
   selector: "anms-map",

@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Action, Store, select } from "@ngrx/store";
+import { mergeMap, map, withLatestFrom, filter } from "rxjs/operators";
 
 import * as stationsActions from "../actions/stations.actions";
-import { mergeMap, map, withLatestFrom } from "rxjs/operators";
 import { FetchDataService } from "@app/core/fetch-data/fetch-data.service";
 import { StationSensors } from "../models/stationsModels";
-import { AppState } from "@app/core";
 import { selectStationsEntireState } from "../selectors/stationsSelector";
+import { AppState } from "@app/core/core.state";
 
 @Injectable()
 export class StationsEffects {
@@ -92,14 +92,11 @@ export class StationsEffects {
       stationsActions.SENSOR_FETCH_VALUES_SUCCESS
     ),
     withLatestFrom(this.store.pipe(select(selectStationsEntireState))),
-    map(([action, stationsState]) => {
-      if (
+    filter(
+      ([action, stationsState]) =>
         stationsState.values.length > 0 &&
         stationsState.values.length === stationsState.sensors.length
-      ) {
-        return new stationsActions.StationDataFetchSuccess();
-      }
-      return new stationsActions.StationDataFetchContinue();
-    })
+    ),
+    map(() => new stationsActions.StationDataFetchSuccess())
   );
 }

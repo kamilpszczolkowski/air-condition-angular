@@ -4,29 +4,29 @@ import {
   Output,
   EventEmitter,
   ChangeDetectionStrategy
-} from '@angular/core';
+} from "@angular/core";
 
 @Component({
-  selector: 'anms-big-input-action',
-  templateUrl: './big-input-action.component.html',
-  styleUrls: ['./big-input-action.component.scss'],
+  selector: "anms-big-input-action",
+  templateUrl: "./big-input-action.component.html",
+  styleUrls: ["./big-input-action.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BigInputActionComponent {
   @Input()
   disabled = false;
   @Input()
-  fontSet = '';
+  fontSet = "";
   @Input()
-  fontIcon = '';
+  fontIcon = "";
   @Input()
-  faIcon = '';
+  faIcon = "";
   @Input()
-  label = '';
+  label = "";
   @Input()
-  color = '';
+  color = "";
   @Input()
-  ariaLabel = '';
+  ariaLabel = "";
 
   @Output()
   action = new EventEmitter<void>();

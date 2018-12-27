@@ -1,4 +1,5 @@
 import { Action } from "@ngrx/store";
+
 import {
   StationSensors,
   SensorMeasurementsWithId
@@ -16,9 +17,9 @@ export class StationDataFetchSuccess implements Action {
   public readonly type = STATION_DATA_FETCH_SUCCESS;
 }
 
-export const STATION_DATA_FETCH_CONTINUE = "STATION_DATA_FETCH_CONTINUE";
-export class StationDataFetchContinue implements Action {
-  public readonly type = STATION_DATA_FETCH_CONTINUE;
+export const STATION_DATA_FETCH_FAILURE = "STATION_DATA_FETCH_FAILURE";
+export class StationDataFetchFailure implements Action {
+  public readonly type = STATION_DATA_FETCH_FAILURE;
 }
 
 export const STATION_FETCH_AQI_SUCCESS = "STATION_FETCH_AQI_SUCCESS";
@@ -55,4 +56,5 @@ export type StationsActions =
   | StationFetchAqiSuccessAction
   | StationFetchSensorsSuccessAction
   | SensorFetchValuesRequestAction
-  | SensorFetchValuesSuccessAction;
+  | SensorFetchValuesSuccessAction
+  | StationDataFetchFailure;

@@ -68,6 +68,7 @@ import {
   faYoutube,
   faCloudversify
 } from "@fortawesome/free-brands-svg-icons";
+import { environment as env } from "@env/environment";
 
 library.add(
   faBars,
@@ -134,7 +135,7 @@ import { BigInputActionComponent } from "./big-input/big-input-action.component"
     MatDialogModule,
     FontAwesomeModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyAF0dMnU6SE60S3AJT1t7UpWTbVgZI_5CQ"
+      apiKey: env.mapsApiKey
     }),
     AgmSnazzyInfoWindowModule
   ],

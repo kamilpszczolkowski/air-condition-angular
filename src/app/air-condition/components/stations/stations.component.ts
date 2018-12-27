@@ -23,8 +23,8 @@ import {
 } from "@app/core/fetch-data/fetch-data.selectors";
 import { AppState } from "@app/core/core.state";
 import {
-  DataRequestStationsAction,
-  DataUpdateSearchPhraseRequestAction
+  FetchStationsRequest,
+  UpdateSearchPhraseRequest
 } from "@app/core/fetch-data/fetch-data.actions";
 
 @Component({
@@ -37,7 +37,6 @@ export class StationsComponent implements OnInit {
   displayedColumns: string[] = ["stationName", "address"];
   dataSource: MatTableDataSource<StationListTable>;
   searchForm: FormGroup;
-
   isFetching$ = this.store.select(selectIsFetching);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -46,7 +45,7 @@ export class StationsComponent implements OnInit {
   constructor(private store: Store<AppState>, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.store.dispatch(new DataRequestStationsAction());
+    this.store.dispatch(new FetchStationsRequest());
     this.store.select(selectDataSource).subscribe(list => {
       this.dataSource = new MatTableDataSource<StationListTable>(list);
       this.dataSource.paginator = this.paginator;
@@ -65,9 +64,7 @@ export class StationsComponent implements OnInit {
   }
 
   handleInputChange(event): void {
-    this.store.dispatch(
-      new DataUpdateSearchPhraseRequestAction(event.target.value)
-    );
+    this.store.dispatch(new UpdateSearchPhraseRequest(event.target.value));
   }
 
   openDialog(stationName: string, stationId: number): void {

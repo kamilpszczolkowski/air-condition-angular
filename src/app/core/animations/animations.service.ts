@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable()
 export class AnimationsService {
   constructor() {
-    AnimationsService.routeAnimationType = 'NONE';
+    AnimationsService.routeAnimationType = "NONE";
   }
 
-  private static routeAnimationType: RouteAnimationType = 'NONE';
+  private static routeAnimationType: RouteAnimationType = "NONE";
 
   static isRouteAnimationsType(type: RouteAnimationType) {
     return AnimationsService.routeAnimationType === type;
@@ -18,13 +18,13 @@ export class AnimationsService {
   ) {
     AnimationsService.routeAnimationType =
       pageAnimations && elementsAnimations
-        ? 'ALL'
+        ? "ALL"
         : pageAnimations
-          ? 'PAGE'
-          : elementsAnimations
-            ? 'ELEMENTS'
-            : 'NONE';
+        ? "PAGE"
+        : elementsAnimations
+        ? "ELEMENTS"
+        : "NONE";
   }
 }
 
-export type RouteAnimationType = 'ALL' | 'PAGE' | 'ELEMENTS' | 'NONE';
+export type RouteAnimationType = "ALL" | "PAGE" | "ELEMENTS" | "NONE";

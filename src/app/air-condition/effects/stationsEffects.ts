@@ -1,13 +1,20 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Action, Store, select } from "@ngrx/store";
-import { mergeMap, map, withLatestFrom, filter } from "rxjs/operators";
+import {
+  mergeMap,
+  map,
+  withLatestFrom,
+  filter,
+  catchError
+} from "rxjs/operators";
 
 import * as stationsActions from "../actions/stations.actions";
 import { FetchDataService } from "@app/core/fetch-data/fetch-data.service";
 import { StationSensors } from "../models/stationsModels";
 import { selectStationsEntireState } from "../selectors/stationsSelector";
 import { AppState } from "@app/core/core.state";
+import { of } from "rxjs";
 
 @Injectable()
 export class StationsEffects {
@@ -23,16 +30,18 @@ export class StationsEffects {
       stationsActions.STATION_DATA_FETCH_REQUEST
     ),
     mergeMap(action =>
-      this.fetchDataService
-        .fetchStationAQI(action.payload.id)
-        .pipe(
-          map(
-            aqi =>
-              new stationsActions.StationFetchAqiSuccessAction(
-                aqi.stIndexLevel.indexLevelName
-              )
-          )
-        )
+      this.fetchDataService.fetchStationAQI(action.payload.id).pipe(
+        map(
+          aqi =>
+            new stationsActions.StationFetchAqiSuccessAction(
+              aqi.stIndexLevel.indexLevelName
+            )
+        ),
+        catchError(err => {
+          of(new stationsActions.StationDataFetchFailure());
+          throw err;
+        })
+      )
     )
   );
 
@@ -42,16 +51,16 @@ export class StationsEffects {
       stationsActions.STATION_DATA_FETCH_REQUEST
     ),
     mergeMap(action =>
-      this.fetchDataService
-        .fetchStationSensors(action.payload.id)
-        .pipe(
-          map(
-            stationSensors =>
-              new stationsActions.StationFetchSensorsSuccessAction(
-                stationSensors
-              )
-          )
-        )
+      this.fetchDataService.fetchStationSensors(action.payload.id).pipe(
+        map(
+          stationSensors =>
+            new stationsActions.StationFetchSensorsSuccessAction(stationSensors)
+        ),
+        catchError(err => {
+          of(new stationsActions.StationDataFetchFailure());
+          throw err;
+        })
+      )
     )
   );
 
@@ -65,7 +74,11 @@ export class StationsEffects {
         (sensor: StationSensors) =>
           new stationsActions.SensorFetchValuesRequestAction(sensor.id)
       )
-    )
+    ),
+    catchError(err => {
+      of(new stationsActions.StationDataFetchFailure());
+      throw err;
+    })
   );
 
   @Effect()
@@ -81,7 +94,11 @@ export class StationsEffects {
               ...sensorData,
               sensorId: action.sensorId
             })
-        )
+        ),
+        catchError(err => {
+          of(new stationsActions.StationDataFetchFailure());
+          throw err;
+        })
       )
     )
   );
@@ -97,6 +114,10 @@ export class StationsEffects {
         stationsState.values.length > 0 &&
         stationsState.values.length === stationsState.sensors.length
     ),
-    map(() => new stationsActions.StationDataFetchSuccess())
+    map(() => new stationsActions.StationDataFetchSuccess()),
+    catchError(err => {
+      of(new stationsActions.StationDataFetchFailure());
+      throw err;
+    })
   );
 }

@@ -32,6 +32,8 @@ export function stationsReducer(
       return { ...state, values: [...state.values, action.sensorData] };
     case Actions.STATION_DATA_FETCH_SUCCESS:
       return { ...state, isFetching: false };
+    case Actions.STATION_DATA_FETCH_FAILURE:
+      return { ...state, isFetching: false };
     default:
       return state;
   }

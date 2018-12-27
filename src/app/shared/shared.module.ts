@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AgmCoreModule } from "@agm/core";
+import { AgmSnazzyInfoWindowModule } from "@agm/snazzy-info-window";
 
 import { TranslateModule } from "@ngx-translate/core";
 
@@ -101,7 +103,6 @@ library.add(
 
 import { BigInputComponent } from "./big-input/big-input.component";
 import { BigInputActionComponent } from "./big-input/big-input-action.component";
-import { AgmCoreModule } from "@agm/core";
 
 @NgModule({
   imports: [
@@ -134,7 +135,8 @@ import { AgmCoreModule } from "@agm/core";
     FontAwesomeModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyAF0dMnU6SE60S3AJT1t7UpWTbVgZI_5CQ"
-    })
+    }),
+    AgmSnazzyInfoWindowModule
   ],
   declarations: [BigInputComponent, BigInputActionComponent],
   exports: [
@@ -172,7 +174,8 @@ import { AgmCoreModule } from "@agm/core";
 
     BigInputComponent,
     BigInputActionComponent,
-    AgmCoreModule
+    AgmCoreModule,
+    AgmSnazzyInfoWindowModule
   ]
 })
 export class SharedModule {}

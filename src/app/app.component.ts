@@ -15,8 +15,6 @@ import {
 import { routeAnimations } from "./core/animations/route.animations";
 import { AppState } from "./core/core.state";
 import { LocalStorageService } from "./core/local-storage/local-storage.service";
-import { selectIsAuthenticated } from "./core/auth/auth.selectors";
-import { ActionAuthLogin, ActionAuthLogout } from "./core/auth/auth.actions";
 
 @Component({
   selector: "anms-root",
@@ -64,18 +62,9 @@ export class AppComponent implements OnInit {
       );
     }
 
-    this.isAuthenticated$ = this.store.pipe(select(selectIsAuthenticated));
     this.stickyHeader$ = this.store.pipe(select(selectSettingsStickyHeader));
     this.language$ = this.store.pipe(select(selectSettingsLanguage));
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
-  }
-
-  onLoginClick() {
-    this.store.dispatch(new ActionAuthLogin());
-  }
-
-  onLogoutClick() {
-    this.store.dispatch(new ActionAuthLogout());
   }
 
   onLanguageSelect({ value: language }) {

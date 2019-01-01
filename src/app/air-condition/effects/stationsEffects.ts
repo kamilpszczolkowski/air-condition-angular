@@ -8,13 +8,13 @@ import {
   filter,
   catchError
 } from "rxjs/operators";
-
-import * as stationsActions from "../actions/stations.actions";
-import { FetchDataService } from "@app/core/fetch-data/fetch-data.service";
-import { StationSensors } from "../models/stationsModels";
-import { selectStationsEntireState } from "../selectors/stationsSelector";
-import { AppState } from "@app/core/core.state";
 import { of } from "rxjs";
+
+import { FetchDataService } from "app/core/fetch-data/fetch-data.service";
+import { StationSensors } from "app/air-condition/models/stationsModels";
+import { selectStationsEntireState } from "app/air-condition/selectors/stationsSelector";
+import { AppState } from "app/core/core.state";
+import * as stationsActions from "app/air-condition/actions/stations.actions";
 
 @Injectable()
 export class StationsEffects {
@@ -37,10 +37,7 @@ export class StationsEffects {
               aqi.stIndexLevel.indexLevelName
             )
         ),
-        catchError(err => {
-          of(new stationsActions.StationDataFetchFailure());
-          throw err;
-        })
+        catchError(() => [of(new stationsActions.StationDataFetchFailure())])
       )
     )
   );
@@ -56,10 +53,7 @@ export class StationsEffects {
           stationSensors =>
             new stationsActions.StationFetchSensorsSuccessAction(stationSensors)
         ),
-        catchError(err => {
-          of(new stationsActions.StationDataFetchFailure());
-          throw err;
-        })
+        catchError(() => [of(new stationsActions.StationDataFetchFailure())])
       )
     )
   );
@@ -75,10 +69,7 @@ export class StationsEffects {
           new stationsActions.SensorFetchValuesRequestAction(sensor.id)
       )
     ),
-    catchError(err => {
-      of(new stationsActions.StationDataFetchFailure());
-      throw err;
-    })
+    catchError(() => [of(new stationsActions.StationDataFetchFailure())])
   );
 
   @Effect()
@@ -86,19 +77,16 @@ export class StationsEffects {
     ofType<stationsActions.SensorFetchValuesRequestAction>(
       stationsActions.SENSOR_FETCH_VALUES_REQUEST
     ),
-    mergeMap(action =>
-      this.fetchDataService.fetchSensorData(action.sensorId).pipe(
+    mergeMap(({ sensorId }) =>
+      this.fetchDataService.fetchSensorData(sensorId).pipe(
         map(
           sensorData =>
             new stationsActions.SensorFetchValuesSuccessAction({
               ...sensorData,
-              sensorId: action.sensorId
+              sensorId
             })
         ),
-        catchError(err => {
-          of(new stationsActions.StationDataFetchFailure());
-          throw err;
-        })
+        catchError(() => [of(new stationsActions.StationDataFetchFailure())])
       )
     )
   );
@@ -115,9 +103,6 @@ export class StationsEffects {
         stationsState.values.length === stationsState.sensors.length
     ),
     map(() => new stationsActions.StationDataFetchSuccess()),
-    catchError(err => {
-      of(new stationsActions.StationDataFetchFailure());
-      throw err;
-    })
+    catchError(() => [of(new stationsActions.StationDataFetchFailure())])
   );
 }

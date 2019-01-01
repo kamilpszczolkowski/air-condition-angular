@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
-import { StationsComponent } from "./components/stations/stations.component";
-import { MapComponent } from "./components/map/map.component";
+import { StationsComponent } from "app/air-condition/components/stations/stations.component";
+import { MapComponent } from "app/air-condition/components/map/map.component";
 
 const routes: Routes = [
   {

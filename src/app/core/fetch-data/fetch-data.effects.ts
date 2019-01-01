@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
-import { FetchStationsRequest } from "./fetch-data.actions";
-import * as dataActions from "./fetch-data.actions";
 import { map, mergeMap, catchError } from "rxjs/operators";
-import { FetchDataService } from "./fetch-data.service";
 import { of } from "rxjs";
+
+import * as dataActions from "app/core/fetch-data/fetch-data.actions";
+import { FetchDataService } from "app/core/fetch-data/fetch-data.service";
 
 @Injectable()
 export class DataEffects {
@@ -16,14 +16,13 @@ export class DataEffects {
   DataUpdateSearchPhraseRequestAction;
   @Effect()
   FetchStationsData = this.actions$.pipe(
-    ofType<FetchStationsRequest>(dataActions.FETCH_STATIONS_REQUEST),
+    ofType<dataActions.FetchStationsRequest>(
+      dataActions.FETCH_STATIONS_REQUEST
+    ),
     mergeMap(() =>
       this.fetchDataService.fetchStationsData().pipe(
         map(dataStations => new dataActions.FetchStationsSuccess(dataStations)),
-        catchError(err => {
-          of(new dataActions.FetchStationsFailure());
-          throw err;
-        })
+        catchError(err => [of(new dataActions.FetchStationsFailure())])
       )
     )
   );

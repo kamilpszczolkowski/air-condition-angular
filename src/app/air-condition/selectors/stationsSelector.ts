@@ -27,21 +27,20 @@ export const selectSensorsWithMeasurements = createSelector(
   selectStationsState,
   (state: StationsState) =>
     state.sensors.map(sensor => {
-      let measuredVal = -1;
-      const valuesForStation = state.values.filter(
+      const sensorValues = state.values.find(
         value => value.sensorId === sensor.id
-      )[0];
-      if (valuesForStation !== undefined) {
-        valuesForStation.values.forEach(element => {
-          if (
-            measuredVal === -1 &&
-            element.value !== undefined &&
-            element.value !== null
-          ) {
-            measuredVal = element.value;
-          }
-        });
-      }
+      );
+
+      const measuredVal = (() => {
+        const measure = sensorValues.values.find(
+          element => typeof element.value === "number"
+        );
+        if (measure) {
+          return measure.value;
+        }
+        return -1;
+      })();
+
       return {
         param: sensor.param.paramName,
         measuredVal

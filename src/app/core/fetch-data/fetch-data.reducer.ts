@@ -1,6 +1,6 @@
-import { DataState } from "./fetch-data.models";
-import { DataActions } from "./fetch-data.actions";
-import * as Actions from "./fetch-data.actions";
+import { DataState } from "app/core/fetch-data/fetch-data.models";
+import { DataActions } from "app/core/fetch-data/fetch-data.actions";
+import * as Actions from "app/core/fetch-data/fetch-data.actions";
 
 const initialState: DataState = {
   isFetching: false,

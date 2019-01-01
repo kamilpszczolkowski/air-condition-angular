@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { StationsModalComponent } from "./stations-modal.component";
+import { StationsModalComponent } from "app/air-condition/components/stations-modal/stations-modal.component";
 
 describe("StationsModalComponent", () => {
   let component: StationsModalComponent;

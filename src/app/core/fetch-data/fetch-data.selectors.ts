@@ -1,6 +1,7 @@
 import { createSelector } from "@ngrx/store";
-import { selectDataState } from "../core.state";
-import { DataState } from "./fetch-data.models";
+
+import { selectDataState } from "app/core/core.state";
+import { DataState } from "app/core/fetch-data/fetch-data.models";
 
 export const selectData = createSelector(
   selectDataState,

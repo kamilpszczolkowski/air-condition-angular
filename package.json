@@ -35,11 +35,6 @@
     "docker:prod-up": "docker-compose -f Production.docker-compose.yml up",
     "docker:prod-down": "docker-compose -f Production.docker-compose.yml down"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && npm run lint"
-    }
-  },
   "lint-staged": {
     "{src,e2e,cypress}/**/*.{ts,json,md,scss}": [
       "prettier --write",
@@ -49,6 +44,7 @@
   "private": true,
   "dependencies": {
     "@agm/core": "^1.0.0-beta.5",
+    "@agm/snazzy-info-window": "^1.0.0-beta.5",
     "@angular/animations": "^7.0.3",
     "@angular/cdk": "^7.0.2",
     "@angular/common": "^7.0.3",
@@ -77,6 +73,7 @@
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
     "rxjs": "^6.3.3",
+    "snazzy-info-window": "^1.1.1",
     "uuid": "^3.3.2",
     "web-animations-js": "^2.2.5",
     "zone.js": "^0.8.26"

@@ -7,7 +7,7 @@ import {
   selectAirQualityIndex,
   selectSensorsWithMeasurements
 } from "../../selectors/stationsSelector";
-import { AppState } from "@app/core/core.state";
+import { AppState } from "app/core/core.state";
 
 @Component({
   selector: "anms-stations-modal",
@@ -22,12 +22,12 @@ export class StationsModalComponent implements OnInit {
     Umiarkowany: "brown"
   };
 
-  constructor(private store: Store<AppState>) {}
-
   stationName$ = this.store.select(selectStationName);
-  isFetching = this.store.select(selectStationsFetchStatus);
-  airQualityIndex = this.store.select(selectAirQualityIndex);
-  sensors = this.store.select(selectSensorsWithMeasurements);
+  isFetching$ = this.store.select(selectStationsFetchStatus);
+  airQualityIndex$ = this.store.select(selectAirQualityIndex);
+  sensors$ = this.store.select(selectSensorsWithMeasurements);
+
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {}
 }

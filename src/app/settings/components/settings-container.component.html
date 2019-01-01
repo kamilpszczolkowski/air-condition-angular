@@ -27,13 +27,13 @@
           ></mat-icon>
           <mat-form-field>
             <mat-select
-              [placeholder]="'anms.settings.themes.placeholder' | translate"
+              [placeholder]="'Color theme'"
               [ngModel]="settings.theme"
               (selectionChange)="onThemeSelect($event)"
               name="themes"
             >
               <mat-option *ngFor="let t of themes" [value]="t.value">
-                {{ "anms.settings.themes." + t.label | translate }}
+                {{ t.label }}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -44,7 +44,7 @@
             ><fa-icon icon="lightbulb" color="accent"></fa-icon
           ></mat-icon>
           <mat-placeholder
-            >{{ "anms.settings.themes.night-mode" | translate }}
+            >Auto night mode (from 21:00 to 7:00)
           </mat-placeholder>
           <mat-slide-toggle
             [checked]="settings.autoNightMode"
@@ -54,15 +54,13 @@
         </div>
       </div>
       <div class="col-md-6 group" [ngClass]="routeAnimationsElements">
-        <h2>{{ "anms.settings.animations.title" | translate }}</h2>
+        <h2>Animations</h2>
         <div class="icon-form-field">
           <mat-icon color="accent"
             ><mat-icon color="accent"
               ><fa-icon icon="window-maximize"></fa-icon></mat-icon
           ></mat-icon>
-          <mat-placeholder
-            >{{ "anms.settings.animations.page" | translate }}
-          </mat-placeholder>
+          <mat-placeholder>Navigation whole page transition </mat-placeholder>
           <mat-slide-toggle
             matTooltip="Sorry, this feature is disabled in IE, EDGE and Safari"
             matTooltipPosition="before"
@@ -81,9 +79,7 @@
           <mat-icon color="accent"
             ><fa-icon icon="stream" color="accent"></fa-icon
           ></mat-icon>
-          <mat-placeholder
-            >{{ "anms.settings.animations.elements" | translate }}
-          </mat-placeholder>
+          <mat-placeholder>Navigation page elements slide up </mat-placeholder>
           <mat-slide-toggle
             [checked]="settings.elementsAnimations"
             (change)="onElementsAnimationsToggle($event)"

@@ -46,7 +46,6 @@ import { StationsEffects } from "@app/air-condition/effects/stationsEffects";
           name: "Angular NgRx Material Starter"
         }),
 
-    // 3rd party
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

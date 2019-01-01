@@ -1,14 +1,8 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef
-} from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Store, select } from "@ngrx/store";
+import { Observable } from "rxjs";
 
-import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
-
+import { ROUTE_ANIMATIONS_ELEMENTS } from "app/core";
 import {
   ActionSettingsChangeAnimationsElements,
   ActionSettingsChangeAnimationsPage,
@@ -16,14 +10,14 @@ import {
   ActionSettingsChangeLanguage,
   ActionSettingsChangeTheme,
   ActionSettingsChangeStickyHeader
-} from '../settings.actions';
-import { SettingsState, State } from '../settings.model';
-import { selectSettings } from '../settings.selectors';
+} from "app/settings/settings.actions";
+import { SettingsState, State } from "app/settings/settings.model";
+import { selectSettings } from "app/settings/settings.selectors";
 
 @Component({
-  selector: 'anms-settings',
-  templateUrl: './settings-container.component.html',
-  styleUrls: ['./settings-container.component.scss'],
+  selector: "anms-settings",
+  templateUrl: "./settings-container.component.html",
+  styleUrls: ["./settings-container.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsContainerComponent implements OnInit {
@@ -31,20 +25,20 @@ export class SettingsContainerComponent implements OnInit {
   settings$: Observable<SettingsState>;
 
   themes = [
-    { value: 'DEFAULT-THEME', label: 'blue' },
-    { value: 'LIGHT-THEME', label: 'light' },
-    { value: 'NATURE-THEME', label: 'nature' },
-    { value: 'BLACK-THEME', label: 'dark' }
+    { value: "DEFAULT-THEME", label: "blue" },
+    { value: "LIGHT-THEME", label: "light" },
+    { value: "NATURE-THEME", label: "nature" },
+    { value: "BLACK-THEME", label: "dark" }
   ];
 
   languages = [
-    { value: 'en', label: 'en' },
-    { value: 'de', label: 'de' },
-    { value: 'sk', label: 'sk' },
-    { value: 'fr', label: 'fr' },
-    { value: 'es', label: 'es' },
-    { value: 'pt-br', label: 'pt-br' },
-    { value: 'zh-cn', label: 'zh-cn' }
+    { value: "en", label: "en" },
+    { value: "de", label: "de" },
+    { value: "sk", label: "sk" },
+    { value: "fr", label: "fr" },
+    { value: "es", label: "es" },
+    { value: "pt-br", label: "pt-br" },
+    { value: "zh-cn", label: "zh-cn" }
   ];
 
   constructor(private store: Store<State>) {}

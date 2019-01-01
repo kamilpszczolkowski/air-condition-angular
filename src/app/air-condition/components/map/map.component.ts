@@ -4,11 +4,11 @@ import { Store } from "@ngrx/store";
 import {
   selectIsFetching,
   selectstationsList
-} from "@app/core/fetch-data/fetch-data.selectors";
-import { FetchStationsRequest } from "@app/core/fetch-data/fetch-data.actions";
-import { StationDataFetchRequestAction } from "@app/air-condition/actions/stations.actions";
-import { AppState } from "@app/core/core.state";
-import { googleMapsStyle } from "@app/air-condition/helpers/mapsStyles";
+} from "app/core/fetch-data/fetch-data.selectors";
+import { FetchStationsRequest } from "app/core/fetch-data/fetch-data.actions";
+import { StationDataFetchRequestAction } from "app/air-condition/actions/stations.actions";
+import { AppState } from "app/core/core.state";
+import { googleMapsStyle } from "app/air-condition/helpers/mapsStyles";
 
 @Component({
   selector: "anms-map",

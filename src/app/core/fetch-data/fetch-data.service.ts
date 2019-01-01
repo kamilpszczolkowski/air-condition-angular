@@ -1,13 +1,16 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { DataStation, AirQualityIndex } from "./fetch-data.models";
 import { Observable } from "rxjs";
 
-import { environment as env } from "@env/environment";
+import {
+  DataStation,
+  AirQualityIndex
+} from "app/core/fetch-data/fetch-data.models";
+import { environment as env } from "environments/environment";
 import {
   StationSensors,
   SensorMeasurements
-} from "@app/air-condition/models/stationsModels";
+} from "app/air-condition/models/stationsModels";
 
 @Injectable()
 export class FetchDataService {

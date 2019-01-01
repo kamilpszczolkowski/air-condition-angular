@@ -1,4 +1,4 @@
-@import '../styles-variables';
+@import "../styles-variables";
 
 .theme-wrapper {
   height: 100%;
@@ -12,54 +12,27 @@ mat-sidenav-container {
   .toolbar {
     position: fixed;
     width: 100%;
-    display: flex;
     z-index: 10;
-
-    .nav-button {
-      margin: 0 10px 0 0;
-    }
-
-    fa-icon {
-      font-size: 24px;
-    }
 
     .branding {
       cursor: pointer;
-      overflow: hidden;
-      padding-top: 4px;
-      text-overflow: ellipsis;
-
-      &.center {
-        text-align: center;
-      }
-
-      img {
-        position: relative;
-        top: -2px;
-        width: 48px;
-        height: 48px;
-      }
-    }
-
-    .mat-stroked-button {
-      margin-right: 10px;
     }
 
     .spacer {
       flex: 1 1 auto;
     }
 
-    mat-select {
-      margin: 0 0 0 20px;
-      width: 40px;
-      font-size: 14px;
+    .nav-title {
+      margin-left: 5px;
+      font-size: 37px;
     }
 
-    @media (max-width: map-get($grid-breakpoints, lg)) {
-      .nav-button {
-        min-width: 0;
-        padding: 0 10px;
-      }
+    .nav-button {
+      margin-right: 10px;
+    }
+
+    .mat-stroked-button {
+      margin-right: 10px;
     }
   }
 
@@ -76,76 +49,17 @@ mat-sidenav-container {
       flex: 1 0 auto;
       margin-top: 64px;
       overflow: hidden;
+      height: 100%;
     }
 
     .footer {
-      flex: 0 0 auto;
-      padding: 0 15px;
+      display: flex;
+      padding: 30px;
       text-align: center;
+      justify-content: space-between;
 
-      .row {
-        padding: 10px 0;
-
-        .links {
-          a {
-            transition: padding 0.5s;
-            display: inline-block;
-            padding: 20px 5px;
-
-            &:hover {
-              text-decoration: none;
-            }
-
-            fa-icon {
-              font-size: 30px;
-              width: 35px;
-            }
-
-            span {
-              display: inline-block;
-              width: 75px;
-              padding: 0 0 0 3px;
-              overflow: hidden;
-              text-align: left;
-              white-space: nowrap;
-              transition: width 0.5s;
-            }
-          }
-
-          @media (min-width: map-get($grid-breakpoints, lg)) {
-            a {
-              padding: 20px 10px;
-            }
-          }
-
-          @media (max-width: map-get($grid-breakpoints, md)) {
-            a {
-              padding: 20px;
-
-              span {
-                width: 0;
-                padding: 0;
-              }
-            }
-          }
-
-          @media (max-width: map-get($grid-breakpoints, sm)) {
-            a {
-              padding: 20px 5px;
-            }
-          }
-        }
-
-        @media (min-width: map-get($grid-breakpoints, sm)) {
-          .signature {
-            position: relative;
-
-            a {
-              position: absolute;
-              right: 15px;
-            }
-          }
-        }
+      .year {
+        margin-left: 10px;
       }
     }
   }
@@ -154,30 +68,5 @@ mat-sidenav-container {
     .content {
       margin-top: 56px !important;
     }
-  }
-}
-
-mat-sidenav {
-  width: 250px;
-
-  .branding {
-    height: 64px;
-    padding: 8px 10px;
-    font-size: 20px;
-    font-weight: 500;
-
-    img {
-      height: 48px;
-      margin: 2px 10px 0 0;
-    }
-
-    span {
-      position: relative;
-      top: 3px;
-    }
-  }
-
-  .mat-nav-list {
-    padding-top: 0;
   }
 }

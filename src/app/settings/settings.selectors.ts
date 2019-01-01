@@ -1,9 +1,9 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from "@ngrx/store";
 
-import { SettingsState, State } from './settings.model';
+import { SettingsState, State } from "./settings.model";
 
 export const selectSettingsState = createFeatureSelector<State, SettingsState>(
-  'settings'
+  "settings"
 );
 
 export const selectSettings = createSelector(

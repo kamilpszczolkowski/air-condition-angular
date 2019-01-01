@@ -1,0 +1,25 @@
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+h3 {
+    margin: 10px 0;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    transition: 0.5s;
+}
+
+td:hover {
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.centered {
+    margin: 100px auto;
+}
